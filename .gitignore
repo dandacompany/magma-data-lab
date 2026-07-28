@@ -1,0 +1,17 @@
+# secrets
+.env
+.env.*
+*.pem
+
+# supabase local
+supabase/.temp/
+supabase/.branches/
+
+# node / dashboard
+node_modules/
+.next/
+dist/
+.vercel/
+
+# os
+.DS_Store
