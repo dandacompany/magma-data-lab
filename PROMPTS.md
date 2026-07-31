@@ -107,14 +107,16 @@ hermes kanban --board magma-data unblock (수집 카드 번호)
 Sam은 데이터베이스를 만져본 적이 없습니다. 7.1에서 연결과 스킬을 붙인 건 Ada였고, **프로필이 다르면 도구도 따로**입니다. 7.1에서 Ada에게 쓴 같은 명령을 프로필 이름만 바꿔 실행합니다.
 
 ```bash
-hermes -p sam mcp add supabase --url "쓰기허용_주소" --auth header
+hermes -p sam mcp add supabase --url "https://mcp.supabase.com/mcp?project_ref=(프로젝트 ref)&read_only=false" --auth header
 ```
 
 ```bash
 hermes -p sam skills install skills-sh/supabase/agent-skills/supabase
 ```
 
-토큰은 Ada에게 쓴 것과 같은 값을 넣되 **입력은 따로** 해야 합니다. 프로필마다 인증을 따로 보관합니다.
+`(프로젝트 ref)` 자리는 Supabase 대시보드 주소 `supabase.com/dashboard/project/여기` 부분이며, 7.1에서 쓴 값과 같습니다.
+
+토큰도 Ada에게 쓴 것과 같은 값을 넣되 **입력은 따로** 해야 합니다. 프로필마다 인증을 따로 보관합니다.
 
 ⚠️ "Ada 설정을 복제해줘"라고 에이전트에게 시키면 설정과 스킬은 복제되지만 **인증이 따라오지 않아** 실제 조회에서 권한 오류가 납니다. 그런데도 완료했다고 보고합니다. 두 줄 직접 실행이 확실합니다.
 
