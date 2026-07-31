@@ -102,6 +102,22 @@ hermes kanban --board magma-data unblock (수집 카드 번호)
 
 # 데이터 정제·분석 실습 (7.3)
 
+## 8-2. Sam에게 도구 붙이기 (터미널)
+
+Sam은 데이터베이스를 만져본 적이 없습니다. 7.1에서 연결과 스킬을 붙인 건 Ada였고, **프로필이 다르면 도구도 따로**입니다. 7.1에서 Ada에게 쓴 같은 명령을 프로필 이름만 바꿔 실행합니다.
+
+```bash
+hermes -p sam mcp add supabase --url "쓰기허용_주소" --auth header
+```
+
+```bash
+hermes -p sam skills install skills-sh/supabase/agent-skills/supabase
+```
+
+토큰은 Ada에게 쓴 것과 같은 값을 넣되 **입력은 따로** 해야 합니다. 프로필마다 인증을 따로 보관합니다.
+
+⚠️ "Ada 설정을 복제해줘"라고 에이전트에게 시키면 설정과 스킬은 복제되지만 **인증이 따라오지 않아** 실제 조회에서 권한 오류가 납니다. 그런데도 완료했다고 보고합니다. 두 줄 직접 실행이 확실합니다.
+
 ## 9. 마트 생성 스킬 설치 (터미널)
 
 7.2에서 수집 스킬을 가져왔던 저장소(`github.com/dandacompany/dante-skills`)에 있습니다. 이번엔 **ada** 프로필에 답니다.
