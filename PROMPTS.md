@@ -126,6 +126,12 @@ magma-mart-seed 스킬로 판매 데이터 마트를 만들어줘. 아직 데이
 
 7.1·7.2에서 만든 시장 데이터 표는 지우지 않습니다. 그 옆에 다섯 개가 추가되는 것이고, 다음 유닛에서 둘 다 씁니다.
 
+⚠️ 적재를 두 번 하면 행이 두 배가 됩니다. 표 생성 SQL이 `create table if not exists`라 데이터는 지워지지 않습니다. 처음부터 다시 하실 거면 적재 전에 비우세요.
+
+```sql
+truncate stg_customers, stg_products, stg_promotions, stg_orders, stg_order_items;
+```
+
 ## 11. 채널별 주문 건수 — 먼저 평범하게 (Ada)
 
 ```text
