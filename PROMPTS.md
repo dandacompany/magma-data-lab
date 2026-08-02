@@ -583,7 +583,7 @@ cd ~/.hermes/workspace/magma-content-site
 ```
 
 ```bash
-hermes -p ada cron create "0 9 1 1,4,7,10 *" "분기 보고 파이프라인을 시작해라. 활성 칸반보드에 분기 분석(ada)·보고서 문안(noah)·실적 탭 게재(sam) 카드 3장을 만들고, 각 카드는 앞 카드를 부모로 연결해라. 카드 본문은 저장소의 cards/quarterly-report-template.md 를 따르고, 작업 폴더 경로를 각 카드 본문에 포함해라. 1번 카드만 예약됨 상태로 두어라." --name "분기 실적 보고" --workdir ~/.hermes/workspace/magma-content-site
+hermes -p ada cron create "0 9 1 1,4,7,10 *" "분기 보고 파이프라인을 시작해라. 활성 칸반보드에 분기 분석(ada)·보고서 문안(noah)·실적 탭 게재(sam) 카드 3장을 만들고, 각 카드는 앞 카드를 부모로 연결해라. 카드 본문은 저장소의 cards/quarterly-report-template.md 를 따르고, 작업 폴더 경로를 각 카드 본문에 포함해라. 1번 카드는 만들어지는 대로 바로 시작해라. 사람 승인을 기다리지 마라." --name "분기 실적 보고" --workdir ~/.hermes/workspace/magma-content-site
 ```
 
 ⚠️ **`--workdir` 을 반드시 넣으세요.** 없으면 실행 시점의 폴더를 물려받는데, 그 폴더가 없으면 `FileNotFoundError` 로 실패합니다. 오류 메시지가 원인을 알려주지 않아 찾기 어렵습니다.
