@@ -482,7 +482,20 @@ Aliased      https://<프로젝트>.vercel.app
 > ⚠️ **이 유닛은 `magma-data-lab`이 아니라 회사 사이트 폴더에서 진행합니다.**
 > `~/.hermes/workspace/magma-content-site` 로 이동해서 실습하세요. 프롬프트는 찾기 쉽게 여기 함께 둡니다.
 
-## 34. 보고 채널이 열리는지 먼저 확인
+## 34. 준비 — 무인 발행 허용을 미리 걸어 둔다 (한 번만)
+
+카드가 사람 없이 발행 키를 쓰는 요청을 보내려면 미리 허용해 둬야 합니다. 안 하면 발행마다 보안 승인 대기로 멈춥니다.
+
+1. `~/.hermes/config.yaml` 의 approvals 에서 `cron_mode: approve` 로 바꿉니다 (대시보드 설정 메뉴에서도 가능)
+2. 게이트웨이를 재시작합니다. 설정은 재시작해야 반영됩니다.
+
+```bash
+systemctl --user restart hermes-gateway-...service 이름
+```
+
+이 설정은 위험 명령 차단은 풀지 않고, 카드에 적은 사람 승인(운영 발행 전 멈춤)도 그대로 유지됩니다.
+
+## 34-1. 보고 채널이 열리는지 먼저 확인
 
 슬랙 설정은 **프로필마다 따로**입니다. 게재를 맡을 프로필로 한 번 보내 보고, `sent` 가 나오는 프로필을 기억해 둡니다.
 
@@ -528,9 +541,10 @@ npm run dev
   7) 어느 카드든 오류가 나면 종류를 불문하고 재시도하지 말고, hermes -p 보고프로필 send --to slack 명령으로 실패 사유를 한 줄 보고한 다음 멈춘다
 - 파일 이름과 위치는 아래로 고정한다. 임의로 바꾸지 마라.
   - 분석 결과: content-pipeline/analysis/2026-Q2-sales-analysis.md
-  - 보고서 원고: content/reports/2026-q2-performance.md (slug: 2026-q2-performance)
+  - 보고서 원고(초안): content-pipeline/drafts/2026-q2-performance.md (slug: 2026-q2-performance)
   - 보고서 frontmatter 필수값: period: 2026-Q2 · dashboardUrl: 대시보드 실제 주소
-- 카드 2번은 위 분석 파일 하나만 입력으로 쓴다. 카드 3번은 위 보고서 파일 하나만 발행한다
+- 원고를 content/reports/ 에 직접 만들지 마라. 그 폴더는 발행 API가 쓰는 자리다. 발행되면 content/reports/2026-q2-performance.md 가 만들어진다
+- 카드 2번은 위 분석 파일 하나만 입력으로 쓴다. 카드 3번은 위 원고 초안 파일 하나만 발행한다
 ```
 
 기안을 받으면 **세 가지**를 눈으로 확인합니다.
