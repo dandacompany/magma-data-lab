@@ -542,7 +542,7 @@ npm run dev
 - 파일 이름과 위치는 아래로 고정한다. 임의로 바꾸지 마라.
   - 분석 결과: content-pipeline/analysis/2026-Q2-sales-analysis.md
   - 보고서 원고(초안): content-pipeline/drafts/2026-q2-performance.md (slug: 2026-q2-performance)
-  - 보고서 frontmatter 필수값: period: 2026-Q2 · dashboardUrl: 대시보드 실제 주소
+  - 보고서 frontmatter 필수값: title · description(한 줄 소개 — 발행 API 필수) · period: 2026-Q2 · dashboardUrl: 대시보드 실제 주소
 - 원고를 content/reports/ 에 직접 만들지 마라. 그 폴더는 발행 API가 쓰는 자리다. 발행되면 content/reports/2026-q2-performance.md 가 만들어진다
 - 카드 2번은 위 분석 파일 하나만 입력으로 쓴다. 카드 3번은 위 원고 초안 파일 하나만 발행한다
 ```
