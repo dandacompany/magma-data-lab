@@ -482,18 +482,23 @@ Aliased      https://<프로젝트>.vercel.app
 > ⚠️ **이 유닛은 `magma-data-lab`이 아니라 회사 사이트 폴더에서 진행합니다.**
 > `~/.hermes/workspace/magma-content-site` 로 이동해서 실습하세요. 프롬프트는 찾기 쉽게 여기 함께 둡니다.
 
-## 34. 준비 — 무인 발행 허용을 미리 걸어 둔다 (한 번만)
+## 34. 준비 — 발행 담당의 승인 모드를 수업 동안 끈다
 
-카드가 사람 없이 발행 키를 쓰는 요청을 보내려면 미리 허용해 둬야 합니다. 안 하면 발행마다 보안 승인 대기로 멈춥니다.
-
-1. 게재 담당 프로필 `~/.hermes/profiles/sam/config.yaml` 의 approvals 에서 `cron_mode: approve` 로 바꿉니다. 발행 키를 쓸 프로필에만 열면 됩니다. 대시보드 설정 메뉴에서 sam 프로필로 전환 후 변경해도 됩니다.
-2. 게이트웨이를 재시작합니다. 설정은 재시작해야 반영됩니다.
+카드로 도는 직원은 터미널 앞에 사람이 없어서 승인 질문에 답할 수 없습니다. 발행을 맡은 프로필의 승인 모드를 수업 동안만 끕니다. 6.4에서 했던 그 설정입니다.
 
 ```bash
-systemctl --user restart hermes-gateway-...service 이름
+hermes -p sam config set approvals.mode off
 ```
 
-이 설정은 위험 명령 차단은 풀지 않고, 카드에 적은 사람 승인(운영 발행 전 멈춤)도 그대로 유지됩니다.
+```bash
+hermes -p sam gateway restart
+```
+
+절대 차단 규칙(디스크 삭제 등)은 그대로 유지되고, 카드에 적은 사람 승인(운영 발행 전 멈춤)도 그대로입니다. 격리된 실습 환경에서만 쓰고, 수업이 끝나면 되돌립니다.
+
+```bash
+hermes -p sam config set approvals.mode manual
+```
 
 ## 34-1. 보고 채널이 열리는지 먼저 확인
 
