@@ -486,7 +486,7 @@ Aliased      https://<프로젝트>.vercel.app
 
 카드가 사람 없이 발행 키를 쓰는 요청을 보내려면 미리 허용해 둬야 합니다. 안 하면 발행마다 보안 승인 대기로 멈춥니다.
 
-1. `~/.hermes/config.yaml` 의 approvals 에서 `cron_mode: approve` 로 바꿉니다 (대시보드 설정 메뉴에서도 가능)
+1. 게재 담당 프로필 `~/.hermes/profiles/sam/config.yaml` 의 approvals 에서 `cron_mode: approve` 로 바꿉니다. 발행 키를 쓸 프로필에만 열면 됩니다. 대시보드 설정 메뉴에서 sam 프로필로 전환 후 변경해도 됩니다.
 2. 게이트웨이를 재시작합니다. 설정은 재시작해야 반영됩니다.
 
 ```bash
