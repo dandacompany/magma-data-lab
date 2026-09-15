@@ -318,12 +318,24 @@ Evidence는 **가입 없이** 씁니다. 오픈소스 버전(MIT 라이선스)�
 
 ```bash
 cd ~/.hermes/workspace/magma-data-lab
-npx degit evidence-dev/template dashboard --force
+npx degit evidence-dev/template#4b13d42 dashboard --force
 cd dashboard
 npm install
 ```
 
 `--force` 는 `dashboard` 폴더에 들어 있는 안내용 파일을 덮어쓰기 위한 것입니다. 빼면 `destination directory is not empty` 로 중단됩니다. 원래 여기 채우라고 만들어 둔 자리입니다.
+
+`#4b13d42` 는 템플릿 버전을 고정하는 부분입니다. **빼지 마세요.** Evidence 배포처의 최신 템플릿은 정적 파일을 만들지 않는 클라우드 전용으로 바뀌어 있어서, 고정하지 않으면 32번에서 `build` 폴더가 생기지 않습니다.
+
+제대로 받았는지 한 줄로 확인합니다.
+
+```bash
+grep '"build"' package.json
+```
+
+`"build": "evidence build"` 가 나오면 맞습니다. `"build": "echo ..."` 처럼 안내 문구가 나오면 고정이 빠진 것입니다. `dashboard` 폴더를 지우고 위 명령을 다시 실행하세요.
+
+⚠️ **`evidence` 명령을 따로 설치하지 마세요.** 검색하다 보면 `curl ... evidence.studio/install.sh` 로 설치하라는 안내를 만나게 되는데, 이름만 같은 다른 제품입니다. 클라우드 전용이라 계정 가입이 필요하고 `build` 명령 자체가 없습니다. 이번 실습은 `npm install` 로 받은 것만 씁니다.
 
 ## 24. CA 인증서 받기 (터미널)
 
@@ -448,6 +460,8 @@ cd build && vercel deploy . --prod --yes --name magma-dashboard
 ```
 
 `--name` 을 빼면 폴더 이름인 `build` 가 프로젝트 이름이 됩니다.
+
+⚠️ `npm run build` 가 `'npm run build' is deprecated` 같은 문구만 찍고 `build` 폴더가 생기지 않으면, 23번에서 템플릿 버전 고정(`#4b13d42`)이 빠진 것입니다. `dashboard` 폴더를 지우고 23번부터 다시 진행하세요.
 
 ⚠️ **이름 뒤에 본인 아이디를 붙이세요.** `.vercel.app` 주소는 전 세계에서 한 사람만 갖습니다. 수강생 전원이 같은 이름을 쓸 수 없습니다.
 
